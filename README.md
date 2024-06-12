@@ -35,3 +35,7 @@ The Edge Impulse model UI is available on port 80 of your device.
 
 The experimental "starter" interface UI is available on port 8080 of your device. Note the "File Manager" tab - it will save the first image from each inference as `image.png` which you can download and review from this location.
 
+## Troubleshooting
+
+If your camera is not found it may not be on port "0" - if so you can change the `camera_port` value in the cam service Python file.
+
