@@ -1,5 +1,5 @@
 # Edge Impulse / balena demo
-[Edge Impulse](https://edgeimpulse.com/) impulses can be deployed as Docker containers. The [balena platform](https://www.balena.io/) makes deploying containers to one or 100,000+ edge devices a breeze, so this demo shows how they can work beautifully together.
+[Edge Impulse](https://edgeimpulse.com/) impulses can be [deployed](https://docs.edgeimpulse.com/docs/run-inference/docker) as Docker containers. The [balena platform](https://www.balena.io/) makes deploying containers to one or 100,000+ edge devices a breeze, so this demo shows how they can work beautifully together.
 
 ## What you'll need
 
