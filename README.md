@@ -3,7 +3,7 @@
 
 ## What you'll need
 
-This demo is intended for the Raspberry Pi 4 - any version of that board should work.
+This demo is intended for the Raspberry Pi 4 - any version of that board should work. You should plug a standard USB webcam into one of the USB ports of your Pi.
 
 You'll also need a free or paid Edge Impulse account and an impulse that does image detection (sample public impulses for this are available that you can clone)
 
@@ -23,6 +23,15 @@ Copy the "Container" value to replace the partial example value after the `FROM`
 
 Copy the API key (just the part that begins with `ei_`) to the line that starts `ENV API_KEY=` and also to the second string in the `CMD` command in the last line of the Dockerfile.
 
+Deploy the updated code to your balena device(s) [by issuing](https://docs.balena.io/learn/deploy/deployment/) `balena push` in the balena CLI. 
 
+After the balena builder builds and packages the code, the containers will be pushed to your device(s) and the inferencing engine in the Edge Impulse container should begin to run. You can start inferencing using the output of your connected camera by logging into the "cam" service with the balenaCloud terminal. Enter `python3 capture.py` to start inferencing an image from the webcam every 4 seconds, with the results printed to your terminal.
 
+## How it works
+
+Your model (impulse) is automatically downloaded and run by the Edge Impulse container. It exposes an API which the "cam" service uses to get repeated inferences from the images captured by the webcam. Note the "cam" service has no Edge Impulse-specific code. It uses OpenCV and the Requests module to obtain inferences from the "ei" container.
+
+The Edge Impulse model UI is available on port 80 of your device.
+
+The experimental "starter" interface UI is available on port 8080 of your device. Note the "File Manager" tab - it will save the first image from each inference as `image.png` which you can download and review from this location.
 
