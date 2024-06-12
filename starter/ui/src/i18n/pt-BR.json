@@ -1,0 +1,184 @@
+{
+    "general": {
+        "password": "Senha",
+        "close": "Fechar",
+        "cancel": "Cancelar",
+        "ok": "ok",
+        "are_you_sure": "Tem certeza?",
+        "error": "Erro",
+        "stop": "Parar",
+        "start": "Início",
+        "name": "Nome",
+        "restart": "Reiniciar",
+        "status": "Condição geral",
+        "submit": "Enviar",
+        "hostname": "Nome do host",
+        "open_control_panel": "Abrir o painel de controle",
+        "go_home": "Retorna para casa",
+        "change_language": "Alterar o idioma",
+        "shutdown": "Desligar"
+    },
+    "components": {
+        "charts": {
+            "cpu_stats": {
+                "cpu_status": "Estado da CPU"
+            },
+            "mem_stats": {
+                "used": "Usado",
+                "memory": "Memória",
+                "available": "Disponível"
+            }
+        },
+        "layouts": {
+            "captive_portal": {
+                "connect_to_wifi": "Conecte-se ao Wi-Fi",
+                "copy_to_clipboard": "Copiar para área de transferência",
+                "url_copied": "Foi copiado para a área de transferência",
+                "visit_to_begin": "Para começar, visite a seguinte URL no seu navegador:",
+                "welcome": "Bem-vindo"
+            }
+        },
+        "network": {
+            "change_hostname": {
+                "change_hostname": "Alterar o nome do host"
+            }
+        },
+        "system": {
+            "device_info": {
+                "ip_address": "Endereço IP",
+                "location": "Localização",
+                "not_undervolted": "Alimentação normal",
+                "os_version": "Versão do SO",
+                "public_ip": "IP Público",
+                "raw_json": "JSON puro",
+                "response_details": "Detalhes da resposta",
+                "sdk_unavailable": "Não é possível alcançar os servidores Balena.",
+                "storage": "Armazenamento",
+                "supervisor_version": "Versão do supervisor",
+                "undervolted": "Abaixo da tensão nominal",
+                "mac_address": "Endereço MAC",
+                "cloudlink": "Cloudlink",
+                "temperature": "Temperatura",
+                "check_cloudlink_tooltip": "Clique para verificar a conectividade do Cloudlink novamente",
+                "are_you_connected_fleet": "Você está conectado a uma frota?"
+            },
+            "env_config": {
+                "raw_json": "JSON puro",
+                "response_details": "Detalhes de resposta",
+                "delete_selected_records": "Excluir os registros selecionados",
+                "env_var_warning_message": "Os serviços deste dispositivos serão reiniciados ao adicionar ou ao remover as variáveis do ambiente!",
+                "add_env_var": "Adicionar a variável de ambiente",
+                "key": "Chave",
+                "restarting_containers": "Os seus contêineres precisam ser reiniciados. A interface do usuário ficará indisponível até que o processo seja concluído.",
+                "value": "Valor",
+                "edit": "Editar",
+                "env_rules": "As chaves das variáveis do ambiente devem começar com uma letra e conter apenas letras, dígitos e sublinhados"
+            },
+            "journal_d_logs": {
+                "fetch_journald": "Obter os registros do journald"
+            },
+            "reboot": {
+                "restarting": "Seu dispositivo está reiniciando…",
+                "force_restart": "Impor a reinicialização?"
+            },
+            "update_device": {
+                "force_update": "Impor a atualização?",
+                "update_device": "Atualizar o dispositivo"
+            },
+            "shutdown": {
+                "shutting_down": "Desligando o dispositivo…",
+                "force_shutdown": "Impor o desligamento?"
+            }
+        },
+        "tools": {
+            "file_manager": {
+                "mb_001": "0.01 Mb",
+                "delete": "Excluir",
+                "empty_folder": "Pasta Vazia",
+                "enter_name": "Insira um nome",
+                "filter": "Filtro",
+                "full_screen": "Tela cheia",
+                "invalid_upload_string": "As entradas contêm um nome inválido e não serão enviadas. Os seguintes caracteres não são permitidos: '/', '\\0'",
+                "item_already_exists": "O item já existe",
+                "mb": "Mb",
+                "name": "Nome",
+                "new_folder": "Nova pasta",
+                "no_results_found": "Nenhum resultado foi encontrado",
+                "size_colon": "Tamanho:",
+                "upload_files_exist": "Alguns dos arquivos que você adicionou já existem. Esses arquivos serão sobrescritos.",
+                "upload": "Enviar",
+                "invalid_filemanager_string": "Você digitou um nome inválido. Os seguintes caracteres não são compatíveis: '/', '\\0'"
+            },
+            "system_info": {
+                "select_request": "Escolha uma solicitação"
+            },
+            "container_manager": {
+                "containers": "Recipientes"
+            }
+        },
+        "wifi": {
+            "configure_password": {
+                "invalid_name": "Nome inválido",
+                "invalid_password_length": "A senha deve ter 8 caracteres ou mais.",
+                "set_new_hotspot_password": "Defina a senha do ponto de acesso",
+                "password_set": "A senha foi definida. Caso esteja executando um ponto de acesso, ele será reiniciado."
+            },
+            "configure_ssid": {
+                "invalid_name": "Nome inválido",
+                "ssid_set": "O SSID foi definido. Caso esteja executando um ponto de acesso, ele será reiniciado.",
+                "set_new_hotspot_ssid": "Defina o SSID do ponto de acesso"
+            },
+            "connect": {
+                "connection_request": "O seu dispositivo tentará agora se conectar à uma rede. Caso ela não esteja disponível em um minuto, reconecte-se ao dispositivo e verifique se a sua senha está correta.",
+                "configure_hotspot": "Configurar o ponto de acesso",
+                "disconnect": "Desconectar",
+                "disconnect_request_sent": "O pedido de desconexão foi enviado.",
+                "network_forget_fail": "Houve uma falha ao executar a solicitação de esquecimento.",
+                "no_networks": "Nenhuma rede WiFi foi encontrada",
+                "refresh_not_compatible": "O seu dispositivo precisa ser reinicializado para que a lista seja atualizada.",
+                "searching_networks": "Fazendo a busca pelas redes",
+                "network_connect_fail": "Houve uma falha ao executar a solicitação de conexão.",
+                "select_ssid": "Selecione um SSID",
+                "connect": "Conectar",
+                "invalid_password_length": "A senha deve ter 8 caracteres ou mais.",
+                "network_fetch_fail": "Houve uma falha ao buscar as redes disponíveis.",
+                "already_connected": "Você já está conectado ao Wi-Fi."
+            },
+            "forget_all_wifi": {
+                "forget_all_wifi": "Esqueça todas as conexões de WiFi",
+                "disconnect_request_sent": "O pedido de desconexão foi enviado."
+            }
+        }
+    },
+    "system": {
+        "errors": {
+            "request_error": "Houve um erro de solicitação",
+            "wrong_way": "Caminho errado…",
+            "no_backend": "Não foi possível se comunicar com o serviço de back-end"
+        },
+        "network": {
+            "network_connection_down": "Você não está mais conectado a uma rede. Tente se reconectar ao seu dispositivo.",
+            "network_connection_restored": "A conexão da rede foi restaurada.",
+            "no_wifi_api": "Houve uma falha ao se comunicar com Balena Python Wi-Fi Connect. Ele está instalado neste aparelho?",
+            "wifi_connect_not_installed": "O Balena Python Wi-Fi Connect não está disponível. Ele está instalado neste aparelho?"
+        },
+        "pwa": {
+            "install": "Instalar",
+            "install_notification": "Você sabia que é possível instalar esta página como um aplicativo e usá-lo off-line?",
+            "install_instructions_safari": "- Safari: pressione o botão 'Compartilhar' e selecione 'Adicionar à tela inicial'",
+            "install_instructions_chrome": "- Chrome Android: Pressione o ícone com 'três pontos' no canto superior direito para abrir o menu. Selecione 'Adicionar à tela inicial'.",
+            "install_instructions_browsers": "- Google Chrome e Microsoft Edge: Clique no ícone no lado direito da barra de endereço e clique no botão 'Instalar' ou instale a partir do ícone com 'três pontos'."
+        }
+    },
+    "title": "Interface inicial do Balena",
+    "yml_config": {
+        "network_config": "Configuração de rede",
+        "device_info": "Informação do dispositivo",
+        "environment_variables": "Variáveis do ambiente",
+        "file_manager": "Gerenciador de arquivos",
+        "networking": "Rede",
+        "system_info": "Informação do sistema",
+        "configuration": "Configuração",
+        "container_manager": "Gerenciador dos contêineres"
+    }
+}

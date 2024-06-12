@@ -1,0 +1,14 @@
+// app global css in SCSS form
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url(./fonts/SourceSansPro-Regular.woff) format('woff');
+  src: url(./fonts/SourceSansPro-Regular.woff2) format('woff2');
+}
+
+* {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f8f9fd;
+}

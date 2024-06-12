@@ -1,0 +1,62 @@
+{
+  "name": "ui",
+  "productName": "Balena Starter Interface",
+  "description": "Balena Starter Interface",
+  "license": "MIT",
+  "author": "maggie0002",
+  "version": "0.0.1",
+  "repository": "https://github.com/balena-labs-research/starter-interface",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.vue,.json ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md}\" --ignore-path ../.gitignore",
+    "formatcheck": "prettier \"**/*.{js,ts,vue,scss,html,md}\" --ignore-path ../.gitignore --check",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "yarn lint -c .eslintrc-treeshake.js --no-eslintrc --fix && quasar build",
+    "build-pwa": "yarn lint -c .eslintrc-treeshake.js --no-eslintrc --fix && quasar build -m pwa",
+    "build-electron": "yarn lint -c .eslintrc-treeshake.js --no-eslintrc --fix && quasar build -m electron"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "@quasar/extras": "^1.15.10",
+    "axios": "^1.2.3",
+    "chart.js": "^4.2.0",
+    "js-file-download": "^0.4.12",
+    "pinia": "^2.0.29",
+    "quasar": "^2.11.5",
+    "vue": "^3.2.41",
+    "vue-chart-3": "^3.1.8",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@intlify/eslint-plugin-vue-i18n": "^2.0.0",
+    "@intlify/vite-plugin-vue-i18n": "^6.0.3",
+    "@quasar/app-vite": "^1.1.3",
+    "@types/node": "^18.11.2",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "autoprefixer": "^10.4.12",
+    "electron": "22.0.3",
+    "electron-builder": "^23.6.0",
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "js-yaml": "^4.1.0",
+    "prettier": "^2.8.3",
+    "typescript": "^4.8.4",
+    "workbox-build": "^6.5.4",
+    "workbox-cacheable-response": "^6.5.4",
+    "workbox-core": "^6.5.4",
+    "workbox-expiration": "^6.5.4",
+    "workbox-precaching": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4"
+  },
+  "engines": {
+    "node": "^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

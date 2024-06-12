@@ -1,0 +1,6 @@
+{
+  "name": "builder",
+  "devDependencies": {
+    "@electron/notarize": "^1.2.3"
+  }
+}
