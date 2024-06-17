@@ -9,6 +9,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install opencv-contrib-python requests pillow
 
 COPY *.py ./
+COPY *.jpg ./
 
 CMD ["sleep", "infinity"]
 

@@ -1,15 +1,35 @@
 import cv2
 from time import sleep
 import requests
+import os
 
 # Start the webcam capture
 print("Starting the capture-inference demo...")
-i = 1
+
+i = 1  # iteration counter
 ramp_frames = 30
-camera_port = 0
+
+try:
+    camera_port = int(os.getenv('CAM_PORT', '0'))
+except Exception as e:
+    print("Invalid value for CAM_PORT. Using default 0.")
+    camera_port = 0
+
+try:
+    sleep_time = int(os.getenv('SLEEP_TIME', '4'))
+except Exception as e:
+    print("Invalid value for SLEEP_TIME. Using default 4.")
+    sleep_time = 4
 
 def capture_image():
-    cap = cv2.VideoCapture(camera_port)
+    try:
+        cap = cv2.VideoCapture(camera_port)
+    except Exception as e:
+        print("Can't capture from webcam or no webcam - using sample images.")
+        in_file = open("sample.jpg", "rb")
+        data = in_file.read()
+        return data
+        
     # Give webcam time to initialize
     for j in range(ramp_frames):
         temp = cap.read()
@@ -25,9 +45,8 @@ def capture_image():
             # Return the image as a bytes object
             cap.release()
             buffer_bytes = buffer.tobytes()
-            # if first iteration, save the image locally just to have
-            if i == 1:
-                cv2.imwrite("/app/storage/image.png", frame)
+            # Save the image to accessible shared drive
+            cv2.imwrite("/app/storage/image{}.png".format(i), frame)
             return buffer_bytes
 
     else:
@@ -43,10 +62,14 @@ while(True):
     if image is not None:
         # Send the image to the Docker container API for inferencing
         img = {'file': ('image.jpg', image)}
-        r = requests.post('http://edge-impulse/api/image', files=img)
-        print("Response {}: {}".format(i, r.text))
+        try:
+            r = requests.post('http://edge-impulse/api/image', files=img)
+        except Exception as e:
+            print("EI container not ready yet...")
+        else:
+            print("Response {}: {}".format(i, r.text))
     else:
         print("Failed to capture the image {}.".format(i))
 
     i = i + 1
-    sleep(4)
+    sleep(sleep_time)
