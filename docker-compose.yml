@@ -19,30 +19,30 @@ services:
     volumes:
       -  'bdi_storage:/app/storage'
         
-  balena-starter-interface:
-    build:
-      context: ./starter
-      dockerfile: Dockerfile
-    environment:
-      NETWORK_MODE: bridge # Tell the app if running in `bridge` or `host` network mode
-      SET_HOSTNAME: "balena" # Optional. Changes the device hostname. UI will become accesible on `balena.local`.
-      UDEV: on # Enables ability to auto mount USB drives in to the container
-    restart: always
-    ports:
-      - "8080:80"
-    volumes:
-      - "bdi_db:/app/db" # Stores UI database files
-      - "bdi_storage:/app/storage" # Storage for the File Manager. See docs for more info.
-    privileged: true # This can be removed if not using the USB mounting feature
+  # balena-starter-interface:
+  #   build:
+  #     context: ./starter
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     NETWORK_MODE: bridge # Tell the app if running in `bridge` or `host` network mode
+  #     SET_HOSTNAME: "balena" # Optional. Changes the device hostname. UI will become accesible on `balena.local`.
+  #     UDEV: on # Enables ability to auto mount USB drives in to the container
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #   volumes:
+  #     - "bdi_db:/app/db" # Stores UI database files
+  #     - "bdi_storage:/app/storage" # Storage for the File Manager. See docs for more info.
+  #   privileged: true # This can be removed if not using the USB mounting feature
 
-    # If using the File Manager to access volumes on other containers, ensure this container `depends_on` your
-    # other container using the below:
-    depends_on:
-      - "cam"
+  # # If using the File Manager to access volumes on other containers, ensure this container `depends_on` your
+  # # other container using the below:
+  # depends_on:
+  #   - "cam"
 
-    labels:
-      io.balena.features.supervisor-api: 1
-      io.balena.features.balena-api: 1
+  # labels:
+  #   io.balena.features.supervisor-api: 1
+  #   io.balena.features.balena-api: 1
       
 volumes:
   bdi_db:
