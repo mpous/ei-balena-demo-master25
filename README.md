@@ -33,6 +33,8 @@ Your model (impulse) is automatically downloaded and run by the Edge Impulse con
 
 The Edge Impulse model UI is available on port 80 of your device.
 
+An Express webserver provides a page on port 8088 where you can view the current photo and the annotated version of the photo, with bounding boxes drawn where the EI model detects class item(s).
+
 The experimental "starter" interface UI is available on port 8080 of your device. Note the "File Manager" tab - it will save the first image from each inference as `image.png` which you can download and review from this location.
 
 ## Troubleshooting
