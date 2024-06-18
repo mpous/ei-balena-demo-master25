@@ -9,4 +9,3 @@ EXPOSE 80
 # Start the inference server when the container launches
 # Set your API key in the second position in the command below
 CMD ["--api-key", "ei_82ab4...", "--run-http-server", "80"]
-
