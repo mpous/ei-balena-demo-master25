@@ -11,7 +11,14 @@ services:
     privileged: true
     volumes:
       - "bdi_storage:/app/storage" # Storage for the File Manager. See docs for more info.
-    
+  
+  webserver:
+    build: ./webserver
+    ports:
+      - "8088:80"
+    volumes:
+      -  'bdi_storage:/app/storage'
+        
   balena-starter-interface:
     build:
       context: ./starter

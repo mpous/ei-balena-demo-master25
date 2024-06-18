@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to balena!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap.min.css" />
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+     <!-- Bootstrap CSS
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    -->
+
+  
+  </head>
+  <body>
+    <div class="header">
+      <nav class="navbar">
+        <div class="container d-flex justify-content-center">
+          <a href="http://balena.io/" target="_blank">
+            RESORT INFORMATION SYSTEM powered by <img style="width: 6rem; height: auto;" src="logo.svg">
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container mt-5 mb-5 p-0 pb-5">
+
+      <div class="row d-flex flex-column align-items-center">
+        <h1>Device Info.</h1>
+        
+      </div>
+
+    
+
+        
+              <div class="row d-flex justify-content-center">
+                <div class="box">
+                  <h2 class="title">Device:</h2>
+                      <p>Device model: <span id="tx_model"></span></p>
+                       <p>RAM: <span id="tx_ram"></span></p>
+          
+
+
+
+
+    </div>
+
+     <div class="box">
+                  <h2 class="title">Balena:</h2>
+                      <p>OS: <span id="tx_os"></span></p>
+          <p>IP: <span id="tx_ip"></span></p>
+          <p>Commit: <span id="tx_com"></span></p>
+
+
+
+    </div>
+
+     <div class="box">
+                  <h2 class="title">Browser:</h2>
+                      <p>GPU: <span id="tx_gpu"></span></p>
+                      <p>Ver: <span id="tx_ver"></span></p>
+                      
+
+    </div>
+
+          
+    
+    </div>
+   </div>
+    
+      </div>
+
+    </div>
+    <canvas id="canvas"></canvas>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        window.onload = function () {
+                const searchParams = new URLSearchParams(window.location.search);
+                if (searchParams.has('model')) {
+                    document.getElementById('tx_model').innerHTML = searchParams.get('model');
+                } else {
+                    document.getElementById('tx_model').innerHTML = '(unknown)';
+                }
+                if (searchParams.has('ram')) {
+                    document.getElementById('tx_ram').innerHTML = searchParams.get('ram');
+                } else {
+                    document.getElementById('tx_ram').innerHTML = '(unknown)';
+                }
+                if (searchParams.has('osv')) {
+                    document.getElementById('tx_os').innerHTML = searchParams.get('osv');
+                } else {
+                    document.getElementById('tx_os').innerHTML = '(unknown)';
+                }
+                if (searchParams.has('ip')) {
+                    document.getElementById('tx_ip').innerHTML = searchParams.get('ip');
+                } else {
+                    document.getElementById('tx_ip').innerHTML = '(unknown)';
+                }
+                if (searchParams.has('com')) {
+                    document.getElementById('tx_com').innerHTML = searchParams.get('com');
+                } else {
+                    document.getElementById('tx_com').innerHTML = '(unknown)';
+                }
+                if (searchParams.has('gpu')) {
+                    document.getElementById('tx_gpu').innerHTML = searchParams.get('gpu');
+                } else {
+                    document.getElementById('tx_gpu').innerHTML = '(unknown)';
+                }
+                if (searchParams.has('ver')) {
+                    document.getElementById('tx_ver').innerHTML = searchParams.get('ver');
+                } else {
+                    document.getElementById('tx_ver').innerHTML = '(unknown)';
+                }
+        };
+    </script>        
+  </body>
+</html>

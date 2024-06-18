@@ -46,7 +46,9 @@ def capture_image():
             cap.release()
             buffer_bytes = buffer.tobytes()
             # Save the image to accessible shared drive
-            cv2.imwrite("/app/storage/image{}.png".format(i), frame)
+            #cv2.imwrite("/app/storage/image{}.png".format(i), frame)
+            cv2.imwrite("/app/storage/image.png", frame)
+            cv2.imwrite("/app/storage/image-box.png", frame)
             return buffer_bytes
 
     else:
