@@ -22,6 +22,7 @@ except Exception as e:
     print("Invalid value for SLEEP_TIME. Using default 4.")
     sleep_time = 4
 
+model_container = os.getenv('EI_IMG', 'edge-impulse')
 
 def draw_bounding_boxes(frame, data):
 
@@ -70,11 +71,8 @@ def capture_image():
             # Return the image as a bytes object
             cap.release()
             buffer_bytes = buffer.tobytes()
-            # Save the image to accessible shared drive
-            #cv2.imwrite("/app/storage/image{}.png".format(i), frame)
+            # Save the un-annotated image to accessible shared drive
             cv2.imwrite("/app/storage/image.png", frame)
-            #cv2.imwrite("/app/storage/image-box.png", frame)
-            #return buffer_bytes
             return buffer_bytes, frame
 
     else:
@@ -91,7 +89,7 @@ while(True):
         # Send the image to the Docker container API for inferencing
         img = {'file': ('image.jpg', image)}
         try:
-            r = requests.post('http://edge-impulse/api/image', files=img)
+            r = requests.post('http://' + model_container + '/api/image', files=img)
         except Exception as e:
             print("EI container not ready yet...")
         else:
