@@ -31,9 +31,11 @@ After the balena builder builds and packages the code, the containers will be pu
 
 Your model (impulse) is automatically downloaded and run by the Edge Impulse container. It exposes an API which the "cam" service uses to get repeated inferences from the images captured by the webcam. Note the "cam" service has no Edge Impulse-specific code. It uses OpenCV and the Requests module to obtain inferences from the "ei" container.
 
+Use the device variable `SLEEP_TIME` to set the wait period in seconds between capture events. (Default value is 4.)
+
 The Edge Impulse model UI is available on port 80 of your device.
 
-An Express webserver provides a page on port 8080 where you can view the current photo and the annotated version of the photo, with bounding boxes drawn where the EI model detects class item(s).
+An Express webserver provides a page on port 8080 where you can view the current photo and the annotated version of the photo, with bounding boxes drawn where the EI model detects class item(s). This page is set to auto refresh every five seconds.
 
 You can add additional Dockerfiles for more running models. Use the `EI_IMG` device variable to tell the cam service which model to use. Set the value to the name of the service. (Be sure to use a different name for each service!)
 
