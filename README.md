@@ -21,11 +21,11 @@ On the Edge Impulse "Deployment" screen, enter "Docker" for the "Search deployme
 
 Copy the "Container" value to replace the partial example value after the `FROM` in line one of the Dockerfile.
 
-Copy the API key (just the part that begins with `ei_`) to the line that starts `ENV API_KEY=` and also to the second string in the `CMD` command in the last line of the Dockerfile.
+Copy the API key (just the part that begins with `ei_`) to the second string in the `CMD` command in the last line of the Dockerfile.
 
 Deploy the updated code to your balena device(s) [by issuing](https://docs.balena.io/learn/deploy/deployment/) `balena push` in the balena CLI. 
 
-After the balena builder builds and packages the code, the containers will be pushed to your device(s) and the inferencing engine in the Edge Impulse container should begin to run. You can start inferencing using the output of your connected camera by logging into the "cam" service with the balenaCloud terminal. Enter `python3 capture.py` to start inferencing an image from the webcam every 4 seconds, with the results printed to your terminal.
+After the balena builder builds and packages the code, the containers will be pushed to your device(s) and the inferencing engine in the Edge Impulse container should begin to run. The "cam" service will start executing a Python script that submits an image from the webcam every 4 seconds to the local Edge Impulse inference container, with the results printed to your terminal.
 
 ## How it works
 
