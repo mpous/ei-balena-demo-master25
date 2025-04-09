@@ -15,7 +15,7 @@ services:
   webserver:
     build: ./webserver
     ports:
-      - "8080:80"
+      - "5000:80"
     volumes:
       -  'bdi_storage:/app/storage'
   
@@ -52,8 +52,27 @@ services:
       - "1883:1883"
     restart: always
 
+  influxdb:
+    image: influxdb:1.7.11
+    container_name: influxdb
+    restart: unless-stopped
+    volumes:
+        - influxdb-data:/var/lib/influxdb
+        - influxdb-etc:/etc/influxdb
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+        - "8080:3000"
+    volumes:
+        - "grafana-data:/data"
       
 volumes:
   bdi_storage:
   node-red-data:
+  influxdb-data:
+  influxdb-etc:
+  grafana-data:
 

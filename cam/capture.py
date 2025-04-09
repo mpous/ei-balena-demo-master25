@@ -62,6 +62,9 @@ def draw_bounding_boxes(frame, data):
 def publish_detected_objects(data):
     try:
         boxes = data['result']['bounding_boxes']
+        if not boxes:  # Check if no objects are detected
+            print("No objects detected. Skipping MQTT publish.")
+            return
         message = {"detected_objects": []}
         for obj in boxes:
             message["detected_objects"].append({
