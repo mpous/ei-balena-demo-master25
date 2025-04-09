@@ -2,7 +2,8 @@ import cv2
 from time import sleep
 import requests
 import os
-#import numpy as np
+
+import paho.mqtt.client as mqtt  # Add MQTT library
 
 # Start the webcam capture
 print("Starting the capture-inference demo...")
@@ -23,6 +24,18 @@ except Exception as e:
     sleep_time = 4
 
 model_container = os.getenv('EI_IMG', 'edge-impulse')
+
+# MQTT configuration
+mqtt_broker = os.getenv('MQTT_BROKER', 'mqtt')
+mqtt_port = int(os.getenv('MQTT_PORT', '1883'))
+mqtt_topic = os.getenv('MQTT_TOPIC', 'detected_objects')
+
+# Initialize MQTT client
+mqtt_client = mqtt.Client()
+try:
+    mqtt_client.connect(mqtt_broker, mqtt_port, 60)
+except Exception as e:
+    print(f"Failed to connect to MQTT broker: {e}")
 
 def draw_bounding_boxes(frame, data):
 
@@ -45,6 +58,24 @@ def draw_bounding_boxes(frame, data):
         label_with_conf = '{}: {:.2f}'.format(label, confidence)
         cv2.putText(frame, label_with_conf, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (36, 255, 12), 2)
     return frame
+
+def publish_detected_objects(data):
+    try:
+        boxes = data['result']['bounding_boxes']
+        message = {"detected_objects": []}
+        for obj in boxes:
+            message["detected_objects"].append({
+                "label": obj['label'],
+                "confidence": obj['value'],
+                "x": obj['x'],
+                "y": obj['y'],
+                "width": obj['width'],
+                "height": obj['height']
+            })
+        mqtt_client.publish(mqtt_topic, str(message))
+        print(f"Published to MQTT: {message}")
+    except Exception as e:
+        print(f"Failed to publish MQTT message: {e}")
 
 def capture_image():
     try:
@@ -89,7 +120,7 @@ while(True):
         # Send the image to the Docker container API for inferencing
         img = {'file': ('image.jpg', image)}
         try:
-            r = requests.post('http://' + model_container + '/api/image', files=img)
+            r = requests.post('http://' + model_container + ':1337/api/image', files=img)
         except Exception as e:
             print("EI container not ready yet...")
         else:
@@ -98,6 +129,8 @@ while(True):
             if r.status_code == 200:
                 data = r.json()  # Assuming JSON response contains bounding box data
                 frame_with_boxes = draw_bounding_boxes(frame, data)
+                # Publish detected objects to MQTT
+                publish_detected_objects(data)
                 # Save or display the image
                 cv2.imwrite("/app/storage/image-box.png", frame_with_boxes)
             else:

@@ -5,7 +5,7 @@ services:
     build: ./ei
     privileged: true
     ports:
-      - "80:80"
+      - "1337:1337"
   cam:
     build: ./cam
     privileged: true
@@ -18,7 +18,42 @@ services:
       - "8080:80"
     volumes:
       -  'bdi_storage:/app/storage'
+  
+  node-red:
+    image: bh.cr/balenalabs/balena-node-red-aarch64
+    container_name: node-red
+    privileged: true
+    restart: unless-stopped
+    volumes:
+        - 'node-red-data:/data'
+    labels:
+        io.balena.features.dbus: '1'
+        io.balena.features.sysfs: '1'
+        io.balena.features.supervisor-api: '1'
+        io.balena.features.balena-api: '1'
+    ports:
+        - 80:80
+    environment:
+        PORT: 80
+        USERNAME: "balena"
+        PASSWORD: "balena"
+        ENCRIPTION_KEY: "balena"
+    cap_add:
+        - SYS_RAWIO
+    devices:
+        - "/dev/mem:/dev/mem"
+        - "/dev/gpiomem:/dev/gpiomem"
+        - "/dev/i2c-1:/dev/i2c-1"
+
+  mqtt:
+    image: eclipse-mosquitto:1.6.15
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+    restart: always
+
       
 volumes:
   bdi_storage:
+  node-red-data:
 
